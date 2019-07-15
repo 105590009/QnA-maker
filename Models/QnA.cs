@@ -9,11 +9,22 @@ namespace QnA_Maker.Models
 {
     public class QnA
     {
-        [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Question { get; set; }
-        public string Answer { get; set; }
-        public string KeyWord { get; set; }
-        
+        [ForeignKey("AnsId")]
+        public Answer Answers { get; set; }
     }
+    public class Answer
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Answers { get; set; }
+       
+        public List<QnA> Question { get; set; }
+    }
+
+
+    
 }

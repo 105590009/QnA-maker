@@ -11,3 +11,4 @@ C:\Users\ryanchang\source\repos\QnA_Maker\obj\Debug\netcoreapp2.1\QnA_Maker.Razo
 C:\Users\ryanchang\source\repos\QnA_Maker\bin\Debug\netcoreapp2.1\QnA_Maker.pdb
 C:\Users\ryanchang\source\repos\QnA_Maker\obj\Debug\netcoreapp2.1\QnA_Maker.dll
 C:\Users\ryanchang\source\repos\QnA_Maker\obj\Debug\netcoreapp2.1\QnA_Maker.pdb
+C:\Users\ryanchang\source\repos\QnA_Maker\obj\Debug\netcoreapp2.1\QnA_Maker.csprojAssemblyReference.cache

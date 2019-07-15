@@ -30,10 +30,10 @@ namespace QnA_Maker.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] QnA entity)
         {
-          
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
             return Get(entity.Id);
+
         }
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] QnA entity, int id)
@@ -44,9 +44,9 @@ namespace QnA_Maker.Controllers
             {
                 _dbContext.Entry(entity).CurrentValues.SetValues(entity);
                 oriEmployee.Id = entity.Id;
+                
                 oriEmployee.Question = entity.Question;
-                oriEmployee.Answer = entity.Answer;
-                oriEmployee.KeyWord = entity.KeyWord;
+                //oriEmployee.Answer = entity.Answer;
 
                 //_dbContext.SaveChanges();
                 return Ok();
