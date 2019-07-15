@@ -13,15 +13,20 @@ namespace QnA_Maker.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Question { get; set; }
-        [ForeignKey("AnsId")]
-        public Answer Answers { get; set; }
+        public int AId { get; set; }
+        public Answer ans { get; set; }
     }
     public class Answer
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+<<<<<<< HEAD
         public int Id { get; set; }
         public string Answers { get; set; }
         public List<QnA> Question { get; set; }
+=======
+        public int  Ans_Id { get; set; }
+        public string Answers {get; set; }
+>>>>>>> f0ebbc8626e02ae6036a0eba47f554317bc86396
     }
 
 
