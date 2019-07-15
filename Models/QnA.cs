@@ -21,7 +21,6 @@ namespace QnA_Maker.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Answers { get; set; }
-       
         public List<QnA> Question { get; set; }
     }
 
