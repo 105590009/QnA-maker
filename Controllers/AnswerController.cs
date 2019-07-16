@@ -9,59 +9,64 @@ using Microsoft.AspNetCore.Mvc;
 namespace QnA_Maker.Controllers
 {
     [Route("api/[Controller]")]
-    public class QnAController : Controller
+    public class AnswerController : Controller
     {
         private readonly MyDbContext _dbContext;
 
-        public QnAController(MyDbContext dbContext)
+        public AnswerController(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         [HttpGet]
         public IActionResult Get()
         {
-            return new JsonResult(_dbContext.QnAs);
+            return new JsonResult(_dbContext.answers);
         }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return new JsonResult(_dbContext.QnAs.SingleOrDefault(c => c.Id == id));
+            return new JsonResult(_dbContext.answers.SingleOrDefault(c => c.Id == id));
         }
         [HttpPost]
-        public IActionResult Post([FromBody] QnA entity)
+        public IActionResult Post([FromBody] Answer entity)
         {
             _dbContext.Add(entity);
+            //if (entity.Ans == null)
+            //{
+            //    return BadRequest("Answer are not null");
+            //}
             _dbContext.SaveChanges();
             return Get(entity.Id);
 
         }
         [HttpPut("{id}")]
-        public IActionResult Put([FromBody] QnA entity, int id)
+        public IActionResult Put([FromBody] Answer entity, int id)
         {
 
-            var oriEmployee = _dbContext.QnAs.SingleOrDefault(c => c.Id == id);
-            if (oriEmployee != null)
-            {
-                _dbContext.Entry(entity).CurrentValues.SetValues(entity);
-                oriEmployee.Id = entity.Id;
+            var NewAns = _dbContext.answers.SingleOrDefault(c => c.Id == id);
+            if (NewAns != null)
+            {  
+                NewAns.Id = id;
+                NewAns.Ans = entity.Ans;
+                if (NewAns.Ans == null)
+                {
+                    return BadRequest();
+                }
+                _dbContext.SaveChanges();
                 
-                oriEmployee.Question = entity.Question;
-                //oriEmployee.Answer = entity.Answer;
-
-                //_dbContext.SaveChanges();
                 return Ok();
             }
             return BadRequest();
         }
-            
-        
+
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var OriQnA = _dbContext.QnAs.SingleOrDefault(c => c.Id == id);
-            if (OriQnA != null )
+            var OriQnA = _dbContext.answers.SingleOrDefault(c => c.Id == id);
+            if (OriQnA != null)
             {
-                _dbContext.QnAs.Remove(OriQnA);
+                _dbContext.answers.Remove(OriQnA);
                 _dbContext.SaveChanges();
                 return Ok();
             }

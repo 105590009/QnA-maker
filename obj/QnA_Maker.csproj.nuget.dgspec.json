@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\公司\\QnA_Maker.csproj": {}
+    "C:\\Users\\ryanchang\\source\\repos\\QnA_Maker\\QnA_Maker.csproj": {}
   },
   "projects": {
-    "D:\\公司\\QnA_Maker.csproj": {
+    "C:\\Users\\ryanchang\\source\\repos\\QnA_Maker\\QnA_Maker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\公司\\QnA_Maker.csproj",
+        "projectUniqueName": "C:\\Users\\ryanchang\\source\\repos\\QnA_Maker\\QnA_Maker.csproj",
         "projectName": "QnA_Maker",
-        "projectPath": "D:\\公司\\QnA_Maker.csproj",
-        "packagesPath": "C:\\Users\\JEK\\.nuget\\packages\\",
-        "outputPath": "D:\\公司\\obj\\",
+        "projectPath": "C:\\Users\\ryanchang\\source\\repos\\QnA_Maker\\QnA_Maker.csproj",
+        "packagesPath": "C:\\Users\\ryanchang\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ryanchang\\source\\repos\\QnA_Maker\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\JEK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ryanchang\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
