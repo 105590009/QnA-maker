@@ -12,10 +12,20 @@ namespace QnA_Maker.Models
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Questions { get; set; }
-        public int A_Id { get; set; }
+        public string Content { get; set; }
+        public List<KeyWordList> KeyWord { get; set; }
+        //[ForeignKey("Answers")]
+        //public int AnswerFk { get; set; }
+        public Answer Answers { get; set; }
+        
     }
+    public class KeyWordList
+    {
+        public int Id { get; set; }
+        public string Content { get; set; }
+    }
+   
 
 
-    
+
 }

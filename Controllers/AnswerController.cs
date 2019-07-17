@@ -20,16 +20,20 @@ namespace QnA_Maker.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return new JsonResult(_dbContext.answers);
+            return new JsonResult(_dbContext.Answer);
         }
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return new JsonResult(_dbContext.answers.SingleOrDefault(c => c.Id == id));
+            return new JsonResult(_dbContext.Answer.SingleOrDefault(c => c.Id == id));
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Answer entity)
+        public IActionResult Post([FromBody] Answer entity,int id)
         {
+            var NewData = _dbContext.Question.SingleOrDefault(c => c.Id == id);
+            string[] conditions = new string[] { "what's", "name" };
+            var testData = conditions.Count(x => NewData.Content.Contains(x));
+           NewData.weight=
             _dbContext.Add(entity);
             //if (entity.Ans == null)
             //{
@@ -43,12 +47,12 @@ namespace QnA_Maker.Controllers
         public IActionResult Put([FromBody] Answer entity, int id)
         {
 
-            var NewAns = _dbContext.answers.SingleOrDefault(c => c.Id == id);
+            var NewAns = _dbContext.Answer.SingleOrDefault(c => c.Id == id);
             if (NewAns != null)
             {  
                 NewAns.Id = id;
-                NewAns.Ans = entity.Ans;
-                if (NewAns.Ans == null)
+                NewAns.Content = entity.Content;
+                if (NewAns.Content == null)
                 {
                     return BadRequest();
                 }
@@ -63,10 +67,10 @@ namespace QnA_Maker.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var OriQnA = _dbContext.answers.SingleOrDefault(c => c.Id == id);
+            var OriQnA = _dbContext.Answer.SingleOrDefault(c => c.Id == id);
             if (OriQnA != null)
             {
-                _dbContext.answers.Remove(OriQnA);
+                _dbContext.Answer.Remove(OriQnA);
                 _dbContext.SaveChanges();
                 return Ok();
             }

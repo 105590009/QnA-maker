@@ -14,15 +14,7 @@ namespace QnA_Maker.Controllers
         private readonly MyDbContext _dbContext;
 
         public QuestionController(MyDbContext dbContext)
-        {
-            //var db = from a in dbContext.answers
-            //         join q in dbContext.Question on a.Id
-            //         equals q.A_Id
-            //         select new
-            //         {
-            //             A_Id = a.Id,
-            //             ans=a.Ans
-            //         };
+        { 
             _dbContext = dbContext;
         }
         [HttpGet]
@@ -36,13 +28,16 @@ namespace QnA_Maker.Controllers
             return new JsonResult(_dbContext.Question.SingleOrDefault(c => c.Id == id));
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Question entity)
+        public IActionResult Post([FromBody] Question entity,int id)
         {
-            entity.A_Id =_dbContext.Question.Count()+1;
-            if (entity.Questions == null)
+            var NewData = _dbContext.Question.SingleOrDefault(c => c.Id == id);
+            if (entity.Content == null)
             {
+
                 return BadRequest("Questions are not null");
             }
+            //entity.AnswerFk = _dbContext.Answer.Where(c => c.Id==id).First().Id;
+            //entity.Answers = _dbContext.Answer.Where(a => a.Id == entity.AnswerFk).First();
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
             return Get(entity.Id);
@@ -57,12 +52,12 @@ namespace QnA_Maker.Controllers
             {
                // _dbContext.Entry(entity).CurrentValues.SetValues(entity);
                 NewData.Id = id;
-                NewData.Questions = entity.Questions;
-                if (NewData.Questions == null)
+                NewData.Content = entity.Content;
+                if (NewData.Content == null)
                 {
                     return BadRequest();
                 }
-                NewData.A_Id = id;
+                //NewData.A_Id = id;
                
                 //oriEmployee.Answer = entity.Answer;
 

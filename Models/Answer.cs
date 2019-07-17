@@ -11,6 +11,11 @@ namespace QnA_Maker.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Ans { get; set; }
+        public string Content { get; set; }
+        public int weight { get; set; }
+        //public List<Question> questions { get; set; }
+        public ICollection<Question> Questions { get; set; }
+      
+
     }
 }
