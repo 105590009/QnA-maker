@@ -28,19 +28,11 @@ namespace QnA_Maker.Controllers
             return new JsonResult(_dbContext.Answer.SingleOrDefault(c => c.Id == id));
         }
         [HttpPost]
-        public IActionResult Post([FromBody] Answer entity,int id)
+        public IActionResult Post([FromBody] Answer entity)
         {
-            var NewData = _dbContext.Question.SingleOrDefault(c => c.Id == id);
-            string[] conditions = new string[] { "what's", "name" };
-            var testData = conditions.Count(x => NewData.Content.Contains(x));
-           NewData.weight=
             _dbContext.Add(entity);
-            //if (entity.Ans == null)
-            //{
-            //    return BadRequest("Answer are not null");
-            //}
             _dbContext.SaveChanges();
-            return Get(entity.Id);
+            return Get(entity);
 
         }
         [HttpPut("{id}")]
